@@ -57,6 +57,7 @@ const NavIcons = () => {
               <div>cart is empty</div>
             ) : (
               <>
+              <h1 className="text-xl">Shopping Cart</h1>
               <div className="flex flex-col gap-8">
                 <div className="flex gap-4">
                 <Image

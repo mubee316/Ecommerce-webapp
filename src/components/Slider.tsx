@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const slides = [
   {
@@ -10,26 +10,35 @@ const slides = [
     title: "Summer Sale collections",
     description: "sale! up to 50% off",
     url: "/",
-    bg: "bg-gradient-to-r from-purple-100 to-yellow-50"
+    bg: "bg-gradient-to-r from-red-100 to-red-500"
   },
   {
     id: 2,
     img: "/slide2.jpg",
-    title: "Slide 2",
-    description: "Description 2",
+    title: "Summer Sale collections",
+    description: "sale! up to 50% off",
     url: "/",
+    bg: "bg-gradient-to-r from-gray-100 to-gray-500"
   },
   {
     id: 3,
     img: "/slide3.jpg",
-    title: "Slide 3",
-    description: "Description 3",
+    title: "Summer Sale collections",
+    description: "sale! up to 50% off",
     url: "/",
+    bg: "bg-gradient-to-r from-gray-500 to-black"
   },
 ];
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === slides.length -1 ? 0 : prev + 1))
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="h-[calc(100vh-80px)] overflow-hidden">
@@ -53,7 +62,7 @@ const Slider = () => {
                 alt=""
                 fill
                 sizes="100%"
-                className="object-contain"
+                className="object-contain w-full"
               />
             </div>
           </div>
